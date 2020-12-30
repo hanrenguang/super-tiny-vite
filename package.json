@@ -1,6 +1,6 @@
 {
   "name": "super-tiny-vite",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A simplified example of vite.js.",
   "main": "dist/super-tiny-vite.js",
   "scripts": {
@@ -9,7 +9,8 @@
     "example": "yarn build && node dist/super-tiny-vite.js"
   },
   "dependencies": {
-    "koa": "^2.13.0"
+    "koa": "^2.13.0",
+    "koa-static": "^5.0.0"
   },
   "devDependencies": {
     "@types/koa": "^2.11.6",

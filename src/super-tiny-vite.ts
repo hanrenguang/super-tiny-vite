@@ -13,7 +13,7 @@ export type ServerPluginFactor = (context: ServerPluginContext) => void;
 // create a server
 export function createServer() {
     const { port, root } = config;
-    const absoluteRootPath: string = path.resolve(process.cwd(), root) || '/';
+    const absoluteRootPath: string = path.resolve(__dirname, root) || '/';
 
     const app = new Koa();
     const context: ServerPluginContext = { app, root: absoluteRootPath };

@@ -4,6 +4,6 @@ export interface Config {
 };
 
 export const config: Config = {
-    root: '/',
+    root: '../example',
     port: 3000
 };
