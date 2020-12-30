@@ -1,10 +1,12 @@
 {
   "name": "super-tiny-vite",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A simplified example of vite.js.",
   "main": "dist/super-tiny-vite.js",
   "scripts": {
-    "dev": "tsc -w --incremental --p src"
+    "dev": "tsc -w --incremental --p src",
+    "build": "rm -rf dist && tsc --p src",
+    "example": "yarn build && node dist/super-tiny-vite.js"
   },
   "dependencies": {
     "koa": "^2.13.0"
