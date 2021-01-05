@@ -1,10 +1,13 @@
 import path from 'path';
 import Koa from 'koa';
+import chalk from 'chalk';
 import { ServerPluginStaticAsset } from './plugins/serverPluginStaticAsset';
+import { resolver, InternalResolver } from './utils/resolver';
 import { config } from './vite.config';
 
 export interface ServerPluginContext {
     app: Koa,
+    resolver: InternalResolver,
     root: string
 };
 
@@ -16,13 +19,13 @@ export function createServer() {
     const absoluteRootPath: string = path.resolve(__dirname, root) || '/';
 
     const app = new Koa();
-    const context: ServerPluginContext = { app, root: absoluteRootPath };
+    const context: ServerPluginContext = { app, resolver, root: absoluteRootPath };
 
     const plugins: ServerPluginFactor[] = getPlugins();
     plugins.forEach(plugin => plugin && plugin(context));
 
     app.listen(port, () => {
-        console.log(` Server is running at http://localhost:${port}`);
+        console.log(`\n Server is running at ` + chalk.cyan(`http://localhost:${port}`));
     });
 }
 
