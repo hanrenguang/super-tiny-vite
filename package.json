@@ -1,6 +1,6 @@
 {
   "name": "super-tiny-vite",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A simplified example of vite.js.",
   "main": "dist/super-tiny-vite.js",
   "scripts": {
@@ -9,13 +9,19 @@
     "example": "yarn build && node dist/super-tiny-vite.js"
   },
   "dependencies": {
+    "@types/es-module-lexer": "^0.3.0",
     "@types/fs-extra": "^9.0.6",
     "@types/mime-types": "^2.1.0",
+    "@types/resolve": "^1.20.0",
     "chalk": "^4.1.0",
+    "es-module-lexer": "^0.4.0",
     "fs-extra": "^9.0.1",
     "koa": "^2.13.0",
+    "koa-etag": "^4.0.0",
     "koa-static": "^5.0.0",
-    "mime-types": "^2.1.28"
+    "magic-string": "^0.25.7",
+    "mime-types": "^2.1.28",
+    "resolve": "^1.20.0"
   },
   "devDependencies": {
     "@types/koa": "^2.11.6",
