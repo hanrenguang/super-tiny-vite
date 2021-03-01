@@ -1,6 +1,10 @@
 # super-tiny-vite
 A simplified example of Vite.js.
 
+## Feature
+- static assets server
+- bare module imports
+
 ## Start
 ```bash
 # install dependencies
