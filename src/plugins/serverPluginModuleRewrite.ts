@@ -34,7 +34,6 @@ export const ServerPluginModuleRewrite: ServerPluginFactor = ({ app, resolver, r
                 } catch (err) {
                     console.error(`parse imports error >>> `, err);
                 }
-                console.log(imports);
                 const magicSource = new MagicString(source);
                 
                 for (let i = 0; i < imports.length; i++) {
