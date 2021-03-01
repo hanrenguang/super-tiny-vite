@@ -2,10 +2,11 @@ import fs from 'fs-extra';
 import path from 'path';
 
 export interface InternalResolver {
-    requestToFile(publicPath: string): string
+    requestToFile(publicPath: string, root: string): string
     resolveFilePathPostfix(publicPath: string): string | undefined
 };
 
+// 判断是否是文件
 const isFile = (file: string): boolean => {
     try {
         return fs.statSync(file).isFile();
@@ -16,10 +17,11 @@ const isFile = (file: string): boolean => {
 
 
 export const supportedExts = ['.js'];
+export const moduleRE = /^\/@modules\//;
 
-
-function requestToFile(publicPath: string): string {
-    let resolved: string = publicPath;
+// 解析资源路径
+function requestToFile(publicPath: string, root: string): string {
+    let resolved: string = path.join(root, publicPath.slice(1));
     const postfix = resolveFilePathPostfix(resolved);
 
     if (postfix) {
@@ -32,6 +34,7 @@ function requestToFile(publicPath: string): string {
     return resolved;
 }
 
+// 补全文件后缀
 function resolveFilePathPostfix(filePath: string): string | undefined {
     if (!isFile(filePath)) {
         let postfix = '';
@@ -47,9 +50,8 @@ function resolveFilePathPostfix(filePath: string): string | undefined {
                 break;
             }
         }
-        const queryMatch = filePath.match(/\?.*$/);
-        const query = queryMatch ? queryMatch[0] : '';
-        const resolved = filePath + postfix + query;
+
+        const resolved = filePath + postfix;
         if (resolved !== filePath) {
             return postfix;
         }

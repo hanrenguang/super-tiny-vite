@@ -2,6 +2,7 @@ import path from 'path';
 import Koa from 'koa';
 import chalk from 'chalk';
 import { ServerPluginStaticAsset } from './plugins/serverPluginStaticAsset';
+import { ServerPluginModuleRewrite } from './plugins/serverPluginModuleRewrite';
 import { resolver, InternalResolver } from './utils/resolver';
 import { config } from './vite.config';
 
@@ -32,6 +33,7 @@ export function createServer() {
 // get all plugins
 export function getPlugins(): ServerPluginFactor[] {
     return [
+        ServerPluginModuleRewrite,
         ServerPluginStaticAsset
     ];
 };
